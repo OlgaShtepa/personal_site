@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Olga Shtepa</title>
+  <link rel="stylesheet" href="static/css/styles.css">
+</head>
+
+<body>
+  <div class="top-container">
+    <div class="title-text">
+      <h1>I'm Olga.</h1>
+      <h2>an amateur Python developer.</h2>
+    </div>
+  </div>
+
+  <div class="weather-info">
+    <p id="weatherData">Weather information will appear here</p>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const city = "Warsaw";
+      fetch(`/weather?city=${city}`)
+        .then(response => response.json())
+        .then(data => {
+          const weatherDataDiv = document.getElementById("weatherData");
+          weatherDataDiv.innerHTML = `<strong>${data.location.name}</strong> | Temperature: ${data.current.temp_c}°C | Precipitation: ${data.current.precip_mm} mm`;
+        })
+        .catch(error => {
+          document.getElementById("weatherData").innerText = "Error fetching weather data.";
+          console.error(error);
+        });
+    });
+  </script>
+
+  <div class="middle-container">
+    <div class="profile">
+      <img class="profile-img" src="static/images/OlgaShtepa.jpg" alt="olga-profile-img">
+      <h2>Hello.</h2>
+      <p class="intro">I am an amateur Python developer. I ❤️ cats and fishing.</p>
+    </div>
+    <hr>
+    <div class="skills">
+      <h2>My Skills.</h2>
+      <div class="skill-row">
+        <img class="code-img equal-size-img" src="https://media.giphy.com/media/3oKIPnAiaMCws8nOsE/giphy.gif"
+          alt="code-img">
+        <div class="text-container">
+          <h3>Design & Development</h3>
+          <p class="go-fishing-text">Started as an interest and developed into a passionate pursuit of modern
+            technologies. Embracing the magnificence and power of technology to create impactful solutions.</p>
+        </div>
+      </div>
+      <img class="snake-image-skills" src="static/images/snakes/snake1.png" alt="snake-image">
+      <div class="skill-row">
+        <img class="trout-img equal-size-img" src="https://media.giphy.com/media/STxXGTvgvIrBpDnDLs/giphy.gif"
+          alt="trout-img">
+        <div class="text-container">
+          <h3>Go Fishing</h3>
+          <p>But my best skill is actually in fishing trouts:)</p>
+        </div>
+      </div>
+
+      <div class="skill-row certificates-section">
+  <img class="python-img equal-size-img" src="https://media.giphy.com/media/gG9fVWJdN41NeiHhzk/giphy.gif"
+    alt="python-img">
+  <div class="text-container">
+    <h3 class="certificates-heading">Python Guru - Unlocked</h3>
+    <div class="certificates-info">
+      <img class="certificate-badge" src="static/images/certificate_badge.png" alt="certificate-badge">
+      <p class="certificate-count">{{ certificate_count }}</p>
+    </div>
+    <p class="certificates-description">I've earned {{ certificate_count }} Python certificates, and I'm ready to conquer new challenges in the Python world!</p>
+    <a class="btn view-button" href="https://www.linkedin.com/in/olga-shtepa-4b5072137/details/certifications/"
+      target="_blank">View Certificates</a>
+
+    <div class="github-project">
+      <h3>Check Out My GitHub Project</h3>
+      <p>Explore my Python projects on GitHub and see my contributions:</p>
+      <a class="btn view-button" href="https://github.com/your-username/your-project-repo" target="_blank">View GitHub Project</a>
+    </div>
+  </div>
+</div>
+
+
+    <hr>
+    <div class="contact-me">
+      <h2>Get In Touch</h2>
+      <h3>If you love cats and fishing as much as I do.</h3>
+      <p class="contact-message">Let's talk about how awesome they are! As much as coding!</p>
+      <a class="btn" href="https://www.linkedin.com/in/olga-shtepa-4b5072137/">CONTACT ME</a>
+    </div>
+  </div>
+  <img class="snake-image-contact" src="static/images/snakes/snake2.png" alt="snake-image">
+  </div>
+</body>
+
+</html>
+
