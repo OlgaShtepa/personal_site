@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 from weather_api import get_weather_data
+import datetime
 
 app = Flask(__name__)
 
@@ -7,7 +8,8 @@ certificate_count = 4
 
 @app.route("/")
 def home():
-    return render_template("index.html", certificate_count=certificate_count)
+    current_year=datetime.datetime.now().year
+    return render_template("index.html", certificate_count=certificate_count, year=current_year)
 
 
 @app.route('/weather', methods=['GET'])
